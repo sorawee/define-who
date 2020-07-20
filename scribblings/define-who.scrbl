@@ -12,10 +12,10 @@
 @defmodule[define-who]
 
 This library provides a macro @racket[define/who] which is similar to
-the second form of @racket[define] (for function definition),
-but it additionally binds @racket[who] to the name of the function.
+@racket[define], but it additionally binds @racket[who] to the name of the function.
 
-@defform[(define/who (head args) body ...+)]{
+@defform*[((define/who (head args) body ...+)
+           (define/who id expr))]{
   @examples[#:eval evaluator
     (define/who (test x)
       (list x who))
@@ -27,11 +27,15 @@ but it additionally binds @racket[who] to the name of the function.
       (define who 42)
       who)
     (bar)
+    (define/who baz
+      (let ([table (make-hash)])
+        (λ () who)))
+    (baz)
   ]
 }
 
 
 @defidform[who]{
   Recognized specially within forms like @racket[define/who].
-  A @racket[who] form as an expression is a syntax error.
+  A @racket[who] form out of context is a syntax error.
 }
