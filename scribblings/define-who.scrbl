@@ -12,7 +12,8 @@
 @defmodule[define-who]
 
 This library provides a macro @racket[define/who] which is similar to
-@racket[define], but it additionally binds @racket[who] to the name of the function.
+@racket[define], but it additionally binds @racket[who] to the name of the function
+(as a @tech[#:doc '(lib "scribblings/reference/reference.scrbl")]{symbol}).
 
 @defform*[((define/who (head args) body ...+)
            (define/who id expr))]{
